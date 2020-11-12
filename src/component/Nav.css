@@ -23,5 +23,10 @@ nav{
   margin-left: 1rem;
 }
 
+.nav-auth-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 
