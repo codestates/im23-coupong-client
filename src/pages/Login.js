@@ -1,5 +1,10 @@
 import React from 'react';
 import './CSS/Login.css';
+import GoogleLoginComp from '../component/socialLogin/GoogleLogin';
+import FacebookLoginComp from '../component/socialLogin/FacebookLogin';
+
+
+
 const TEMP_ACCOUNT = {
   email: 'a@a.a',
   password: '1234'
@@ -11,9 +16,8 @@ class Login extends React.Component {
 
     this.state = {
       email: "",
-      pw: "",
-      errMsg: ""
-    };
+      pw: ""
+    }
 
     this.handleEmailInputChange = this.handleEmailInputChange.bind(this);
     this.handlePwInputChange = this.handlePwInputChange.bind(this);
@@ -35,6 +39,7 @@ class Login extends React.Component {
     // 정상 로그인
     if (TEMP_ACCOUNT.email === this.state.email) {
       if (TEMP_ACCOUNT.password === this.state.pw) {
+
         this.props.handleLogin(this.state);
         this.setState({ errMsg: "" })
       } else { // 비밀번호가 틀림
@@ -46,20 +51,15 @@ class Login extends React.Component {
 
   }
 
-
   render() {
-    console.log(this.state)
     return (
       <div className="login-wrapper">
         <div className="login-container">
 
           {/* social lgoin */}
-          <a href="/" className="fb-login social-login">
-            Login with Facebook
-          </a>
-          <a href="/" className="google-login social-login">
-            Login with Google
-          </a>
+          <FacebookLoginComp usrUpdate={this.props.usrUpdate} />
+
+          <GoogleLoginComp usrUpdate={this.props.usrUpdate} />
 
           {/* seperator */}
           <div className="seperator-container">

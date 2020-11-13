@@ -17,16 +17,27 @@ nav{
 .nav-content-list{
   display: flex;
   list-style: none;
+  align-items: center;
 }
 
 .nav-content{
   margin-left: 1rem;
 }
 
-.nav-auth-container{
+.nav-container-auth{
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
+.user-progile-container {
+  width: 2rem;
+  height: 2rem;
 
+}
+
+.user-progile-container img{
+  width: 100%;
+  height: auto;
+}
 

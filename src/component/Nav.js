@@ -5,10 +5,14 @@ import './Nav.css'
 import NavLogin from './NavLogin';
 
 class Nav extends React.Component {
+
   constructor(props) {
-    super(props);
+    super(props)
+
   }
+
   render() {
+
     return (
       <nav>
 
@@ -23,7 +27,7 @@ class Nav extends React.Component {
             <li className="nav-content">
               <Link className="nav-list-link" to="/mypage">My Page</Link>
             </li>
-            <NavLogin isLogin={this.props.isLogin} />
+            <NavLogin usrName={this.props.usrName} usrUpdate={this.props.usrUpdate} />
           </ul>
         </div>
       </nav>
