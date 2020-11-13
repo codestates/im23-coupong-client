@@ -16,12 +16,25 @@ class Login extends React.Component {
           </a>
 
           {/* seperator */}
-          <p className="login-seperator">-OR-</p>
+          <div className="seperator-container">
+            <p className="login-seperator">-OR-</p>
+          </div>
 
           {/* login form */}
-          <form>
-
-          </form>
+          <div className="login-form-container">
+            <form className="login-form" autoComplete="off" action="">
+              <div className="login-group">
+                <label type="email">Email:</label>
+                <input type="email" id="email-input" name="email" />
+              </div>
+              <div className="login-group">
+                <label type="password">Password:</label>
+                <input type="password" id="password-input" name="password" />
+              </div>
+              <a href="/" class="forget-pw-link">Forgot password?</a>
+              <input type="submit" value="Login" id="login-submit" />
+            </form>
+          </div>
 
         </div>
 
