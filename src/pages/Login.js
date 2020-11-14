@@ -2,6 +2,8 @@ import React from 'react';
 import './CSS/Login.css';
 import GoogleLoginComp from '../component/socialLogin/GoogleLogin';
 import FacebookLoginComp from '../component/socialLogin/FacebookLogin';
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 
 
@@ -22,6 +24,7 @@ class Login extends React.Component {
     this.handleEmailInputChange = this.handleEmailInputChange.bind(this);
     this.handlePwInputChange = this.handlePwInputChange.bind(this);
     this.userValidCheck = this.userValidCheck.bind(this);
+    this.handleResponseSuccess = this.handleResponseSuccess.bind(this);
   }
 
   handleEmailInputChange(e) {
@@ -34,20 +37,50 @@ class Login extends React.Component {
     this.setState({ pw: e.target.value });
   }
 
+  handleResponseSuccess(res) {
+    // let history = useHistory();
+    // console.log(res);
+    console.log('----------');
+    console.log(res);
+    console.log('----------');
+    sessionStorage.setItem("login_type", "local");
+    sessionStorage.setItem("user_name", res.data.username);
+    sessionStorage.setItem("user_email", res.data.email);
+    // sessionStorage.setItem("user_profile", res.profileObj.imageUrl);
+
+    this.props.usrUpdate(res.data.username);
+    // history.push('/')
+  }
+
   userValidCheck(e) {
     e.preventDefault();
-    // 정상 로그인
-    if (TEMP_ACCOUNT.email === this.state.email) {
-      if (TEMP_ACCOUNT.password === this.state.pw) {
 
-        this.props.handleLogin(this.state);
-        this.setState({ errMsg: "" })
-      } else { // 비밀번호가 틀림
-        this.setState({ errMsg: "비밀번호가 일치하지 않습니다." });
-      }
-    } else { // 가입된 유저가 아님
-      this.setState({ errMsg: "가입된 이력이 없습니다." });
+    const { email, pw } = this.state;
+
+    if (!email || !pw) {
+      this.setState({
+        errorMessage: "이메일과 비밀번호를 입력하세요"
+      });
+      return;
     }
+    else {
+      this.setState({
+        errorMessage: ""
+      });
+    }
+
+    return axios
+      .post("http://54.180.150.143:3001/users/signin", {
+        email: email,
+        password: pw,
+      })
+      .then(this.handleResponseSuccess)
+      .catch((err) => {
+        alert("로그인 실패: 아이디와 비밀번호를 다시 확인해주세요.")
+      });
+
+
+
 
   }
 
