@@ -1,0 +1,49 @@
+
+.mypage-nav-container{
+  
+  /* padding-right: 8rem; */
+  border: 1px solid var(--color-scale-gray-2);
+  width: 20%;
+  max-width: 17.5rem;
+  border-radius: 0.25rem;
+
+}
+
+.mypage-nav-list{
+  list-style: none;
+}
+
+
+.mypage-nav-content{
+  width:100%;
+  background-color: var(--color-scale-gray-1);
+  
+  
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  
+} 
+
+.mypage-nav-link{
+  display: block;
+  text-decoration: none;
+  color: var(--color-scale-gray-8);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  transition: all 0.2s ease;
+}
+
+.mypage-nav-link:hover{
+  cursor: pointer;
+  color: black;
+  text-shadow:0.75px 0.75px var(--color-scale-gray-5);
+}
+
+.mypage-nav-link.clicked{
+  color: black;
+  text-shadow:0.75px 0.75px var(--color-scale-gray-5);
+  border-left: 4px solid black;
+}
