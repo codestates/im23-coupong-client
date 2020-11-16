@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './CSS/Signup.css';
-// import axios from "axios";
+import axios from "axios";
 
-// axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -34,17 +34,16 @@ class Signup extends React.Component {
       });
     }
 
-    // axios
-    //   .post("http://localhost:3001/signup", {
-    //     email: email,
-    //     password: password,
-    //     username: username,
-    //     mobile: mobile,
-    //   })
-    //   .then((res) => {
-    //     this.props.history.push("/");
-    //   })
-    //   .catch((err) => console.log(err));
+    axios
+      .post("http://54.180.150.143:3001/users/signup", {
+        email: email,
+        password: password,
+        username: username,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
