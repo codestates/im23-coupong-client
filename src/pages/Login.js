@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import './CSS/Login.css';
 import GoogleLoginComp from '../component/socialLogin/GoogleLogin';
