@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Nav from './component/Nav';
-import { MyPage, Main, Login, SignUp, CouponSetUp } from './pages';
+import { MyPage, Main, Login, SignUp, CouponEditSelect } from './pages';
 
 import {
   BrowserRouter as Router,
@@ -56,8 +56,8 @@ class App extends React.Component {
             <Route path="/signup">
               <SignUp />
             </Route>
-            <Route path="/couponsetup">
-              <CouponSetUp />
+            <Route path="/CouponEditSelect">
+              <CouponEditSelect />
             </Route>
           </Switch>
         </Router>
