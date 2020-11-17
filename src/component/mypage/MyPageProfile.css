@@ -1,0 +1,104 @@
+.mypage-profile-container{
+  min-width: 25rem;
+  border: 1px solid grey;
+  box-shadow: 10px 10px rgba(77, 77, 77, 0.3);
+  border:3px solid black;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.profile-group{
+  width: 100%;
+  display: block;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.profile-group label{
+  display:block;
+  text-align: left;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-group.title{
+  display: flex;
+  width:100%;
+  margin-bottom: 0px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-form-container{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
+
+
+.profile-group>input{
+  width: 95%;
+  display: block;
+  text-align: left;
+  padding: 0.5rem 0.25rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+}
+
+.profile-group>input[type="email"]{
+  color: var(--color-scale-gray-4);
+  font-style: italic; 
+}
+
+.react-date-picker__wrapper{
+  text-align: left;
+  
+  border: 1px solid black;
+  border-radius: 0.25rem;
+}
+
+.react-date-picker__inputGroup{
+  padding: 0.5rem 0.25rem;
+}
+
+#profile-setting-submit{
+  margin-top:1.25rem;
+}
+
+.profile-img-container{
+  width:4rem;
+  height: 4rem;
+  overflow: hidden;
+}
+
+.profile-group.profile-img{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-img-container img{
+  width: 100%;
+  height: auto;
+}
+
+.social-login-tag-container{
+  display: block;
+}
+
+.social-login-tag-container span{
+  color:white;
+  padding: 0.25rem 0.25rem;
+  font-size: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.social-login-tag-container.google span{
+  background-color: var(--color-google);
+}
+
+.social-login-tag-container.facebook span{
+  background-color: var(--color-facebook);
+}

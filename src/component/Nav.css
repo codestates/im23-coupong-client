@@ -1,6 +1,6 @@
 nav{
   width: 100%;
-  height: 64px;
+  height: 4rem;
   outline-style: solid;
   outline-width: 1px;
 }
@@ -33,7 +33,15 @@ nav{
 .user-progile-container {
   width: 2rem;
   height: 2rem;
+  background: none;
+  border: none;
+}
+.user-progile-container:hover{
+  cursor: pointer;
+}
 
+.user-progile-container:focus{
+  outline: none;
 }
 
 .user-progile-container img{
@@ -41,3 +49,36 @@ nav{
   height: auto;
 }
 
+.nav-modal-container{
+  width: 5rem;
+  background-color: white;
+  position: absolute;
+  top:3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top:0.75rem;
+  padding-bottom: 0.75rem;
+  box-shadow:0 10px 15px -5px rgba(0,0,0,0.4);
+  border-radius: 0.25rem;
+}
+
+.modal-nav-content{
+  text-decoration: none;
+  background:none;
+  border: none;
+  font-size: 0.9rem;
+  color: var(--color-scale-gray-7);
+}
+
+.modal-nav-content.list-link{
+  margin-bottom: 0.75rem;
+}
+
+.modal-nav-content:hover{
+  color: var(--color-facebook);
+  font-weight: bold;
+  text-decoration: underline;
+}
