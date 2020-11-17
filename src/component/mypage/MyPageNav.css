@@ -36,14 +36,31 @@
   transition: all 0.2s ease;
 }
 
+
+
 .mypage-nav-link:hover{
   cursor: pointer;
   color: black;
-  text-shadow:0.75px 0.75px var(--color-scale-gray-5);
+  -webkit-text-stroke: 0.25px black;
 }
 
 .mypage-nav-link.clicked{
   color: black;
-  text-shadow:0.75px 0.75px var(--color-scale-gray-5);
   border-left: 4px solid black;
+  -webkit-text-stroke: 0.25px black;
+}
+
+.mypage-nav-link.delete{
+  color: var(--color-red-highlight);
+}
+
+.mypage-nav-link.delete:hover{
+  color: 	var(--color-red-highlight);
+  -webkit-text-stroke: 0.25px var(--color-red-highlight);
+}
+
+.mypage-nav-link.delete.clicked{
+  color: var(--color-red-highlight);
+  -webkit-text-stroke: 0.25px var(--color-red-highlight);
+  border-left: 4px solid var(--color-red-highlight);
 }

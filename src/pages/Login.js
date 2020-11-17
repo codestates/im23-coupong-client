@@ -2,8 +2,10 @@ import React from 'react';
 import './CSS/Login.css';
 import GoogleLoginComp from '../component/socialLogin/GoogleLogin';
 import FacebookLoginComp from '../component/socialLogin/FacebookLogin';
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
+import { SECREAT_KEY } from '../config/config.json'
+import sha1 from "js-sha1";
 
 
 
@@ -18,7 +20,8 @@ class Login extends React.Component {
 
     this.state = {
       email: "",
-      pw: ""
+      pw: "",
+      redirect: null
     }
 
     this.handleEmailInputChange = this.handleEmailInputChange.bind(this);
@@ -34,7 +37,7 @@ class Login extends React.Component {
 
   handlePwInputChange(e) {
 
-    this.setState({ pw: e.target.value });
+    this.setState({ pw: sha1(e.target.value + SECREAT_KEY) });
   }
 
   handleResponseSuccess(res) {
@@ -46,10 +49,12 @@ class Login extends React.Component {
     sessionStorage.setItem("login_type", "local");
     sessionStorage.setItem("user_name", res.data.username);
     sessionStorage.setItem("user_email", res.data.email);
-    // sessionStorage.setItem("user_profile", res.profileObj.imageUrl);
+    sessionStorage.setItem("user_profile", "https://cdn.onlinewebfonts.com/svg/img_83486.png");
+    sessionStorage.setItem("user_birth", "");
 
     this.props.usrUpdate(res.data.username);
-    // history.push('/')
+    this.setState({ redirect: "/" })
+
   }
 
   userValidCheck(e) {
@@ -62,8 +67,7 @@ class Login extends React.Component {
         errorMessage: "이메일과 비밀번호를 입력하세요"
       });
       return;
-    }
-    else {
+    } else {
       this.setState({
         errorMessage: ""
       });
@@ -76,7 +80,8 @@ class Login extends React.Component {
       })
       .then(this.handleResponseSuccess)
       .catch((err) => {
-        alert("로그인 실패: 아이디와 비밀번호를 다시 확인해주세요.")
+        // alert("로그인 실패: 아이디와 비밀번호를 다시 확인해주세요.")
+        console.log(err);
       });
 
 
@@ -85,10 +90,13 @@ class Login extends React.Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
     return (
       <div className="login-wrapper">
         <div className="login-container">
-
+          <h1 className="login-title">Login</h1>
           {/* social lgoin */}
           <FacebookLoginComp usrUpdate={this.props.usrUpdate} />
 
@@ -108,7 +116,7 @@ class Login extends React.Component {
               </div>
               <div className="login-group">
                 <label type="password">Password:</label>
-                <input type="password" id="password-input" name="password" value={this.state.pw} onChange={this.handlePwInputChange} />
+                <input type="password" id="password-input" name="password" onChange={this.handlePwInputChange} />
               </div>
               <a href="/" className="forget-pw-link">Forgot password?</a>
               <input type="submit" value="Login" id="login-submit" />

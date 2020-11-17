@@ -15,6 +15,7 @@ function FacebookLoginComp(props) {
     sessionStorage.setItem("user_name", res.name);
     sessionStorage.setItem("user_email", res.email)
     sessionStorage.setItem("user_profile", res.picture.data.url);
+    sessionStorage.setItem("user_birth", "");
     props.usrUpdate(res.name);
     history.push('/')
   }
