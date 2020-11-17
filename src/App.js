@@ -20,6 +20,8 @@ class App extends React.Component {
 
     this.updateUserName = this.updateUserName.bind(this);
   }
+
+
   componentDidMount() {
     const usrName = sessionStorage.getItem('user_name') ? sessionStorage.getItem('user_name') : ''
     this.setState({ user_name: usrName })
@@ -29,18 +31,10 @@ class App extends React.Component {
     this.setState({ user_name: name });
   }
 
-  // handleLogin() {
-  //   console.log('haha')
-  //   this.setState({
-  //     is_login: !this.state.isLogin
-  //   })
-  // }
-
   render() {
     return (
       <div className="App" >
-        <Router>
-          {/* <Nav isLogin={this.state.is_login} usrName={this.state.user_name} /> */}
+        <Router >
           <Nav usrUpdate={this.updateUserName} usrName={this.state.user_name} />
           <Switch>
             <Route exact path="/">
@@ -50,11 +44,10 @@ class App extends React.Component {
               <MyPage />
             </Route>
             <Route path="/login">
-              {/* <Login handleLogin={this.handleLogin.bind(this)} /> */}
               <Login usrUpdate={this.updateUserName} usrName={this.state.user_name} />
             </Route>
             <Route path="/signup">
-              <SignUp />
+              <SignUp usrUpdate={this.updateUserName} />
             </Route>
             <Route path="/couponsetup">
               <CouponSetUp />
