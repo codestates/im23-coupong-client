@@ -10,12 +10,11 @@ function GoogleLoginComp(props) {
   let history = useHistory();
 
   const responseGoogle = (res) => {
-    // console.log(res);
-    console.log(res.profileObj);
     sessionStorage.setItem("login_type", "google");
     sessionStorage.setItem("user_name", res.profileObj.name);
     sessionStorage.setItem("user_email", res.profileObj.email);
     sessionStorage.setItem("user_profile", res.profileObj.imageUrl);
+    sessionStorage.setItem("user_birth", "");
 
     props.usrUpdate(res.profileObj.name);
     history.push('/')

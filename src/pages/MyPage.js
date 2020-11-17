@@ -1,7 +1,9 @@
 import React from 'react';
-import MyPageNav from '../component/MyPageNav';
+import MyPageNav from '../component/mypage/MyPageNav';
 import Coupon from '../component/Coupon';
-import MyPageProfile from '../component/MyPageProfile';
+import MyPageProfile from '../component/mypage/MyPageProfile';
+import MyPageSecurity from '../component/mypage/MyPageSecurity';
+import MyPageDelete from '../component/mypage/MyPageDelete';
 import './CSS/MyPage.css';
 import {
   BrowserRouter as Router,
@@ -22,6 +24,12 @@ class MyPage extends React.Component {
               </Route>
               <Route path="/mypage/coupon">
                 <Coupon />
+              </Route>
+              <Route path="/mypage/security">
+                <MyPageSecurity />
+              </Route>
+              <Route path="/mypage/delete">
+                <MyPageDelete />
               </Route>
             </div>
           </Switch>
