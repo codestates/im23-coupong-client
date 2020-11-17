@@ -1,6 +1,6 @@
 
 import React from 'react';
-import './MyPageNav.css'
+import './MyPageSecurity.css'
 
 class MyPageSecurity extends React.Component {
 
@@ -20,27 +20,28 @@ class MyPageSecurity extends React.Component {
 
     return (
       <div className="mypage-security-container">
-        비밀번호 변경
-        <form>
-          <div className="security-group">
-            <label type="password">기존 비밀번호:</label>
-            <input type="password" id="old-pw-input" name="old-pw"
-            // value={this.state.user_name}
-            />
-          </div>
-          <div className="security-group">
-            <label type="password">새 비밀번호:</label>
-            <input type="password" id="new-pw-input" name="new-pw"
-            // value={this.state.user_name}
-            />
-          </div>
-          <div className="security-group">
-            <label type="password">비밀번호 확인:</label>
-            <input type="password" id="new-pw-confirm-input" name="new-pw-confirm"
-            // value={this.state.user_name}
-            />
-          </div>
-        </form>
+        <div className="security-group-title">
+          <h1>비밀번호 변경</h1>
+        </div>
+        <div className="security-form-container">
+          <form>
+            <div className="security-group">
+              <label type="password">기존 비밀번호:</label>
+              <input type="password" id="old-pw-input" name="old-pw"
+              // value={this.state.user_name}
+              />
+            </div>
+            <div className="security-group">
+              <label type="password">새 비밀번호:</label>
+              <input type="password" id="new-pw-input" name="new-pw" />
+            </div>
+            <div className="security-group">
+              <label type="password">비밀번호 확인:</label>
+              <input type="password" id="new-pw-confirm-input" name="new-pw-confirm" />
+            </div>
+            <input type="submit" value="변경" id="password-setting-submit" />
+          </form>
+        </div>
       </div>
     )
   };
