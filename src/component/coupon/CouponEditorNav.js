@@ -9,9 +9,11 @@ class CouponEditorNav extends React.Component {
     super(props)
 
     this.state = {
-      items: this.getCntNum(this.props.couponCnt)
     }
     this.getCntNum = this.getCntNum.bind(this);
+    // this.handleBtnClick = this.handleBtnClick.bind(this);
+    // this.removeClickedClass = this.removeClickedClass.bind(this);
+    // this.addClickedClass = this.addClickedClass.bind(this);
   }
 
   getCntNum(maxNum) {
@@ -22,6 +24,30 @@ class CouponEditorNav extends React.Component {
     return arr;
   }
 
+  // handleBtnClick(e) {
+  //   const navBtnList = document.querySelectorAll('.editor-nav-btn');
+  //   this.removeClickedClass(navBtnList);
+  //   this.addClickedClass(navBtnList, e.target.value);
+  //   this.props.handleCurEditor(e);
+  //   return;
+  // }
+
+  // removeClickedClass(navBtnList) {
+  //   navBtnList.forEach(link => {
+  //     link.classList.remove('clicked')
+  //   })
+  //   return;
+  // }
+
+  // addClickedClass(navBtnList, no) {
+  //   navBtnList.forEach(btn => {
+  //     if (btn.value === no) {
+  //       btn.classList.add('clicked')
+  //       return;
+  //     }
+  //   })
+  // }
+
   render() {
     return (
       <div className="editor-nav-container">
@@ -31,7 +57,18 @@ class CouponEditorNav extends React.Component {
             .map(no => {
               return (
                 <li className="editor-nav-content">
-                  <Link className="editor-nav-link" to={`/couponsetting/${no}`} onClick={this.handleLinkClick}>{no}</Link>
+                  <button
+                    className={this.props.curEditor === no ? (
+                      "editor-nav-btn clicked"
+                    ) : (
+                        "editor-nav-btn"
+                      )
+                    }
+                    value={no}
+                    onClick={this.props.handleCurEditor}
+                  >
+                    {no}
+                  </button>
                 </li>
               )
             })}

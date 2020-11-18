@@ -19,6 +19,7 @@ class CouponSetUp extends React.Component {
 
     this.state = {
       coupon_cnt: 1,
+      cur_editor_num: 1,
       coupon_data: [
         {
           no: 1,
@@ -36,6 +37,7 @@ class CouponSetUp extends React.Component {
     this.displayErrMsg = this.displayErrMsg.bind(this);
     this.postCouponData = this.postCouponData.bind(this);
     this.getCouponData = this.getCouponData.bind(this);
+    this.handleCurEditor = this.handleCurEditor.bind(this);
   }
 
   handleMoreBtn() {
@@ -46,6 +48,10 @@ class CouponSetUp extends React.Component {
       this.setState((prevState) => {
         return {
           coupon_cnt: prevState.coupon_cnt + 1,
+          cur_editor_num: prevState.coupon_cnt < 3 ? (
+            prevState.coupon_cnt + 1) : (
+              prevState.coupon_cnt
+            ),
           coupon_data: [...prevState.coupon_data, {
             no: prevState.coupon_cnt + 1,
             title: "",
@@ -81,6 +87,10 @@ class CouponSetUp extends React.Component {
     this.setState((prevState) => {
       return ({
         coupon_cnt: prevState.coupon_cnt - 1,
+        cur_editor_num: prevState.cur_editor_num > 1 ? (
+          prevState.cur_editor_num - 1) : (
+            prevState.cur_editor_num
+          ),
         coupon_data: items.filter(item => item.no !== num)
       })
     })
@@ -116,6 +126,9 @@ class CouponSetUp extends React.Component {
     return data[key];
   }
 
+  handleCurEditor(e) {
+    return this.setState({ cur_editor_num: e.target.value })
+  }
 
   render() {
     return (
@@ -144,39 +157,21 @@ class CouponSetUp extends React.Component {
           </div>
         </section>
         <section className="editor-write-section">
-          <Router>
-            <CouponEditorNav couponCnt={this.state.coupon_cnt} />
-            <Switch>
-              <Route
-                path="/couponsetting/:no"
-                render={routeProps => (
-                  <CouponEditor
-                    no={routeProps.match.params.no}
-                    title={this.getCouponData("title", routeProps.match.params.no)}
-                    startDate={this.getCouponData("start_date", routeProps.match.params.no)}
-                    endDate={this.getCouponData("end_date", routeProps.match.params.no)}
-                    handleInputChange={this.handleInputChange}
-                  />
-                )} />
-              {/* <CouponEditor
-                  wholeData={this.state.coupon_data}
-                /> */}
-              {/* </Route> */}
-
-            </Switch>
-          </Router>
-          {/* {this.state.coupon_data.map(coupon => {
-            return (
-              <CouponEditor
-                no={coupon.no}
-                title={coupon.title}
-                startDate={coupon.start_date}
-                endDate={coupon.end_date}
-                handleInputChange={this.handleInputChange}
-              />
-            )
-          })} */}
-          <button onClick={this.postCouponData}>쿠폰 저장</button>
+          <CouponEditorNav
+            couponCnt={this.state.coupon_cnt}
+            handleCurEditor={this.handleCurEditor}
+            curEditor={this.state.cur_editor_num}
+          />
+          <CouponEditor
+            no={this.state.cur_editor_num}
+            title={this.getCouponData("title", this.state.cur_editor_num)}
+            startDate={this.getCouponData("start_date", this.state.cur_editor_num)}
+            endDate={this.getCouponData("end_date", this.state.cur_editor_num)}
+            handleInputChange={this.handleInputChange}
+          />
+          <div className="editor-submit-btn-container">
+            <button className="editor-submit-btn" onClick={this.postCouponData}>쿠폰 저장</button>
+          </div>
         </section>
       </div>
     );
