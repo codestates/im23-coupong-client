@@ -18,7 +18,7 @@ class Main extends React.Component {
           <p className="intro-body">{INTRO_TEXT_BODY}</p>
         </div>
         <div className="router-container">
-          <Link className="main-list-link" to="/couponsetup">
+          <Link className="main-list-link" to="/couponsetting">
             <span>쿠폰 만들러 가기</span>
           </Link>
         </div>
