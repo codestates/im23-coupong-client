@@ -71,6 +71,7 @@ class MyPageProfile extends React.Component {
             <div className="profile-group">
               <label type="birth">Birth:</label>
               <DatePicker
+                className="birth-picker"
                 onChange={this.handleDateChange}
                 value={this.state.user_birth}
               />

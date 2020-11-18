@@ -1,6 +1,14 @@
 import React from 'react';
 import Coupon from '../component/coupon/Coupon';
-import DatePicker from 'react-date-picker';
+import CouponEditor from '../component/coupon/CouponEditor';
+import CouponEditorNav from '../component/coupon/CouponEditorNav';
+import axios from "axios";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 import './CSS/CouponSetUp.css';
 
 
@@ -24,19 +32,22 @@ class CouponSetUp extends React.Component {
 
     this.handleMoreBtn = this.handleMoreBtn.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleCloseBtn = this.handleCloseBtn.bind(this);
+    this.displayErrMsg = this.displayErrMsg.bind(this);
+    this.postCouponData = this.postCouponData.bind(this);
+    this.getCouponData = this.getCouponData.bind(this);
   }
 
   handleMoreBtn() {
-    console.log(this.state);
     if (this.state.coupon_cnt === 3) {
-      return this.setState({ errMsg: "쿠폰 추가 최대갯수는 3개입니다." })
+      this.setState({ errMsg: "쿠폰 추가 최대갯수는 3개입니다." })
     } else {
       // this.setState({ coupon_cnt: prevCnt + 1 })
-      return this.setState((state) => {
+      this.setState((prevState) => {
         return {
-          coupon_cnt: state.coupon_cnt + 1,
-          coupon_data: [...state.coupon_data, {
-            no: state.coupon_cnt + 1,
+          coupon_cnt: prevState.coupon_cnt + 1,
+          coupon_data: [...prevState.coupon_data, {
+            no: prevState.coupon_cnt + 1,
             title: "",
             start_date: "",
             end_date: ""
@@ -53,6 +64,11 @@ class CouponSetUp extends React.Component {
     if (key === "title") {
       item[key] = event.target.value;
     } else {
+      console.log(typeof event);
+      console.log(event)
+      console.log(Date(event))
+      let date = new Date(event);
+      console.log(date.getMonth());
       item[key] = event
     }
     items[num - 1] = item;
@@ -60,9 +76,47 @@ class CouponSetUp extends React.Component {
 
   }
 
-  // this.setState((state, props) => {
-  //   return {counter: state.counter + props.step};
-  // });
+  handleCloseBtn(num) {
+    let items = [...this.state.coupon_data];
+    this.setState((prevState) => {
+      return ({
+        coupon_cnt: prevState.coupon_cnt - 1,
+        coupon_data: items.filter(item => item.no !== num)
+      })
+    })
+  }
+
+  displayErrMsg() {
+    alert(this.state.errMsg);
+    this.setState({ errMsg: "" });
+  }
+
+  postCouponData() {
+    console.log('###')
+    const { user_id, user_name, login_type, user_email } = sessionStorage
+    axios.post('http://54.180.150.143:3001/tickets/create', {
+      id: user_id,
+      name: user_name,
+      email: user_email,
+      login_type: login_type,
+      coupon_cnt: this.state.coupon_cnt,
+      coupon_data: this.state.coupon_data
+    },
+      {
+        headers: {
+          'User-Id': user_id
+        }
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
+  getCouponData(key, no) {
+    let data = this.state.coupon_data.filter(item => item.no === no);
+    return data[key];
+  }
+
+
   render() {
     return (
       // 여기에 couponEditor comp들어와야됨
@@ -76,11 +130,13 @@ class CouponSetUp extends React.Component {
                   title={coupon.title}
                   startDate={coupon.start_date}
                   endDate={coupon.end_date}
+                  closeAction={this.handleCloseBtn}
+                  totalCnt={this.state.coupon_cnt}
                 />
               )
             })}
 
-            {this.state.errMsg && (alert(this.state.errMsg))}
+            {this.state.errMsg && (this.displayErrMsg())}
 
           </div>
           <div className="viewer-btn-container">
@@ -88,26 +144,39 @@ class CouponSetUp extends React.Component {
           </div>
         </section>
         <section className="editor-write-section">
+          <Router>
+            <CouponEditorNav couponCnt={this.state.coupon_cnt} />
+            <Switch>
+              <Route
+                path="/couponsetting/:no"
+                render={routeProps => (
+                  <CouponEditor
+                    no={routeProps.match.params.no}
+                    title={this.getCouponData("title", routeProps.match.params.no)}
+                    startDate={this.getCouponData("start_date", routeProps.match.params.no)}
+                    endDate={this.getCouponData("end_date", routeProps.match.params.no)}
+                    handleInputChange={this.handleInputChange}
+                  />
+                )} />
+              {/* <CouponEditor
+                  wholeData={this.state.coupon_data}
+                /> */}
+              {/* </Route> */}
 
-          <div className="write-container no-1">
-            <h5 className="coupon-no">#1</h5>
-            <label type="coupon-title">Title:</label>
-            <input type="text"
-              onChange={this.handleInputChange("title", 1)}
-              value={this.state.coupon_data[0].title}
-            />
-            <label type="coupon-start-date">Start Date:</label>
-            <DatePicker
-              onChange={this.handleInputChange("start_date", 1)}
-              value={this.state.coupon_data[0].start_date}
-            />
-            <label type="coupon-end-date">End Date:</label>
-            <DatePicker
-              onChange={this.handleInputChange("end_date", 1)}
-              value={this.state.coupon_data[0].end_date}
-            />
-          </div>
-
+            </Switch>
+          </Router>
+          {/* {this.state.coupon_data.map(coupon => {
+            return (
+              <CouponEditor
+                no={coupon.no}
+                title={coupon.title}
+                startDate={coupon.start_date}
+                endDate={coupon.end_date}
+                handleInputChange={this.handleInputChange}
+              />
+            )
+          })} */}
+          <button onClick={this.postCouponData}>쿠폰 저장</button>
         </section>
       </div>
     );

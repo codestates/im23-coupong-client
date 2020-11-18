@@ -47,11 +47,11 @@ class Login extends React.Component {
     console.log(res);
     console.log('----------');
     sessionStorage.setItem("login_type", "local");
+    sessionStorage.setItem("user_id", res.data.userId);
     sessionStorage.setItem("user_name", res.data.username);
     sessionStorage.setItem("user_email", res.data.email);
     sessionStorage.setItem("user_profile", "https://cdn.onlinewebfonts.com/svg/img_83486.png");
     sessionStorage.setItem("user_birth", "");
-
     this.props.usrUpdate(res.data.username);
     this.setState({ redirect: "/" })
 
