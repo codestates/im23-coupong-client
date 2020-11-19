@@ -125,7 +125,7 @@ class CouponSetUp extends React.Component {
   }
 
   handleCurEditor(e) {
-    return this.setState({ cur_editor_num: e.target.value })
+    return this.setState({ cur_editor_num: parseInt(e.target.value) })
   }
 
   render() {

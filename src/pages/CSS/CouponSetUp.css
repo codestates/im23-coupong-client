@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
-@import url("https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap");
+
 
 .coupon-editor-container{
   display: flex;
@@ -258,6 +257,8 @@ outline: none;
   margin-top: 1rem;
   padding: 1rem 2rem;
   border-top-right-radius: 5rem;
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .editor-title-container.write{

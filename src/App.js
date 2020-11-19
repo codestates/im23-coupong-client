@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from "react-router-dom";
 import './App.css';
 import Nav from './component/Nav';
-import { MyPage, Main, Login, SignUp, CouponSetUp } from './pages';
+import { MyPage, Main, Login, SignUp, CouponSetUp, CouponChoose } from './pages';
 
 import {
   BrowserRouter as Router,
@@ -86,11 +86,20 @@ class App extends React.Component {
 
             <Route exact path="/couponsetting" render={() => {
               return this.requireAuth() ? (
+                <CouponChoose />
+              ) : (
+                  <Redirect to="/login" />
+                )
+            }} />
+
+            <Route exact path="/couponsetting/ticket" render={() => {
+              return this.requireAuth() ? (
                 <CouponSetUp />
               ) : (
                   <Redirect to="/login" />
                 )
             }} />
+
           </Switch>
         </Router>
       </div >

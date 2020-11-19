@@ -1,5 +1,7 @@
 
 import React from 'react';
+import CouponOverlap from './CouponOverlap';
+
 import FAKE_DATA from '../../FAKE_DATA';
 
 class MyPageCoupon extends React.Component {
@@ -9,10 +11,15 @@ class MyPageCoupon extends React.Component {
   }
 
   render() {
-    console.log(FAKE_DATA.coupon_data);
     return (
-      <div className="coupon-container">
-        쿠폰 히얼
+      <div className="coupon-overlap-wrapper">
+        {/* {
+          FAKE_DATA.coupon_data.map(group => {
+            return (
+              <CouponOverlap data={grouup.data} />
+            )
+          })
+        } */}
       </div>
     )
   };

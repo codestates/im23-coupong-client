@@ -14,9 +14,7 @@ class CouponEditor extends React.Component {
   }
 
   render() {
-    console.log('editor redering...')
-    console.log(this.props)
-    console.log('----')
+
     const { handleInputChange, title, startDate, endDate, no } = this.props;
     return (
       < div className="write-container" >
