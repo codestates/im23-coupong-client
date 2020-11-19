@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 
 class NavLgoin extends React.Component {
@@ -20,9 +21,17 @@ class NavLgoin extends React.Component {
 
 
   handleLogout() {
+    this.handleModalClick();
     sessionStorage.clear();
-    this.props.usrUpdate();
-    this.setState({ redirect: "/" })
+    axios.post('http://54.180.150.143:3001/users/signout')
+      .then(res => {
+        console.log(res)
+        this.props.usrUpdate();
+        // this.props.updateRedirect("/");
+        this.props.goToHome();
+      })
+      .catch(err => console.log(err));
+
   }
 
 
@@ -36,10 +45,11 @@ class NavLgoin extends React.Component {
     //   modalEle.setAttribute("class", "nav-modal-container-off");
     // }
     // return;
-    e.preventDefault();
+    // e.preventDefault();
     this.setState(prevState => ({
       showModal: !prevState.showModal
     }));
+    return;
   }
 
 
@@ -68,7 +78,7 @@ class NavLgoin extends React.Component {
           </li>
           { this.state.showModal && (
             <div className="nav-modal-container">
-              <Link className="modal-nav-content list-link" to="/mypage">마이 페이지</Link>
+              <Link className="modal-nav-content list-link" onClick={this.handleModalClick} to="/mypage">마이 페이지</Link>
               <button className="modal-nav-content logout" onClick={this.handleLogout}>로그아웃</button>
             </div>
           )}
@@ -84,7 +94,7 @@ class NavLgoin extends React.Component {
 
   render() {
 
-    if (this.state.redirect) {
+    if (this.props.redirect) {
       return (
         <>
           <div className="nav-container-auth">

@@ -50,14 +50,14 @@
   font-style: italic; 
 }
 
-.react-date-picker__wrapper{
+.birth-picker>.react-date-picker__wrapper{
   text-align: left;
   
   border: 1px solid black;
   border-radius: 0.25rem;
 }
 
-.react-date-picker__inputGroup{
+.birth-picker>.react-date-picker__inputGroup{
   padding: 0.5rem 0.25rem;
 }
 
