@@ -11,8 +11,9 @@ class Nav extends React.Component {
 
   }
 
-  render() {
 
+
+  render() {
     return (
       <nav>
         <div id="nav-container">
@@ -24,9 +25,14 @@ class Nav extends React.Component {
               <Link className="nav-list-link" to="/">Home</Link>
             </li>
             <li className="nav-content">
-              <Link className="nav-list-link" to="/couponsetup">쿠폰 만들기</Link>
+              <Link className="nav-list-link" to="/couponsetting">쿠폰 만들기</Link>
             </li>
-            <NavLogin usrName={this.props.usrName} usrUpdate={this.props.usrUpdate} />
+            <NavLogin
+              usrName={this.props.usrName}
+              usrUpdate={this.props.usrUpdate}
+              updateRedirect={this.props.updateRedirect}
+              goToHome={this.props.goToHome}
+            />
           </ul>
         </div>
       </nav>

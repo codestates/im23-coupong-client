@@ -1,6 +1,6 @@
 import React from 'react';
 import MyPageNav from '../component/mypage/MyPageNav';
-import Coupon from '../component/Coupon';
+import MyPageCoupon from '../component/mypage/MyPageCoupon';
 import MyPageProfile from '../component/mypage/MyPageProfile';
 import MyPageSecurity from '../component/mypage/MyPageSecurity';
 import MyPageDelete from '../component/mypage/MyPageDelete';
@@ -23,7 +23,7 @@ class MyPage extends React.Component {
                 <MyPageProfile />
               </Route>
               <Route path="/mypage/coupon">
-                <Coupon />
+                <MyPageCoupon />
               </Route>
               <Route path="/mypage/security">
                 <MyPageSecurity />
