@@ -49,6 +49,7 @@ class CouponEditorNav extends React.Component {
   // }
 
   render() {
+    console.log('current editor num: ', this.props.curEditor)
     return (
       <div className="editor-nav-container">
         <ul className="editor-nav-list">

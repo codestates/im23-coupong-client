@@ -7,7 +7,7 @@ class CouponChoose extends React.Component {
     return (
       <div className="coupon-choose-wrapper">
         <div className="choose-router-container stamp">
-          <Link className="coupon-choose-list-link" to="/main">
+          <Link className="coupon-choose-list-link" to="/">
             <i class="fas fa-stamp fa-5x"></i>
             <span>스탬프형</span>
           </Link>
