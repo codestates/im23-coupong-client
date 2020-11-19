@@ -7,10 +7,10 @@ class CouponEditSelect extends React.Component {
     return (
       // 여기에 CouponEditSelect들어와야됨
       <div className="select-wrap">
-        <Link className="StampBoard" to="./CouponEdit/StampBoard.js">
+        <Link className="StampBoard" to="/stampboard">
           <div className="StampBoard-text">Stamp-Board</div>
         </Link>
-        <Link className="Ticket" to="./CouponEdit/Ticket.js">
+        <Link className="Ticket" to="/ticket">
           <div className="Ticket-text">Ticket</div>
         </Link>
       </div>
