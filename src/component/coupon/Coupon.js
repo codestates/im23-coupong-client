@@ -13,12 +13,14 @@ class Coupon extends React.Component {
   render() {
     const { closeAction, no, totalCnt } = this.props;
     return (
-      <div>
-        {no === totalCnt && (
-          no !== 1 && (
-            <button onClick={() => closeAction(no)}>X</button>
-          )
-        )}
+      <div className="coupon-wrapper">
+        <div className="close-btn-container">
+          {no === totalCnt && (
+            no !== 1 && (
+              <button className="coupon-close-btn" onClick={() => closeAction(no)}>X</button>
+            )
+          )}
+        </div>
 
         <div className="bg-container" style={{ backgroundImage: `url(${IMG})` }}>
           <div className="bg-text-container parent" style={{ width: "100%", height: "6rem" }}>

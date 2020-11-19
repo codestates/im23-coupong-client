@@ -3,6 +3,8 @@ import Coupon from '../component/coupon/Coupon';
 import CouponEditor from '../component/coupon/CouponEditor';
 import CouponEditorNav from '../component/coupon/CouponEditorNav';
 import axios from "axios";
+import dateFormat from 'dateformat';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -70,12 +72,8 @@ class CouponSetUp extends React.Component {
     if (key === "title") {
       item[key] = event.target.value;
     } else {
-      console.log(typeof event);
-      console.log(event)
-      console.log(Date(event))
       let date = new Date(event);
-      console.log(date.getMonth());
-      item[key] = event
+      item[key] = dateFormat(date, "yyyy-mm-dd")
     }
     items[num - 1] = item;
     this.setState({ coupon_data: items })
@@ -134,45 +132,55 @@ class CouponSetUp extends React.Component {
     return (
       // 여기에 couponEditor comp들어와야됨
       <div className="coupon-editor-container">
-        <section className="editor-viewer-section">
-          <div className="viewer-display">
-
-            {this.state.coupon_data.map(coupon => {
-              return (
-                <Coupon no={coupon.no}
-                  title={coupon.title}
-                  startDate={coupon.start_date}
-                  endDate={coupon.end_date}
-                  closeAction={this.handleCloseBtn}
-                  totalCnt={this.state.coupon_cnt}
-                />
-              )
-            })}
-
-            {this.state.errMsg && (this.displayErrMsg())}
-
+        <div className="viewer-section-wrapper">
+          <div className="editor-title-container">
+            <h3>쿠폰 미리보기</h3>
           </div>
-          <div className="viewer-btn-container">
-            <button className="viewer-more-btn" onClick={this.handleMoreBtn}>+</button>
-          </div>
-        </section>
-        <section className="editor-write-section">
-          <CouponEditorNav
-            couponCnt={this.state.coupon_cnt}
-            handleCurEditor={this.handleCurEditor}
-            curEditor={this.state.cur_editor_num}
-          />
-          <CouponEditor
-            no={this.state.cur_editor_num}
-            title={this.getCouponData("title", this.state.cur_editor_num)}
-            startDate={this.getCouponData("start_date", this.state.cur_editor_num)}
-            endDate={this.getCouponData("end_date", this.state.cur_editor_num)}
-            handleInputChange={this.handleInputChange}
-          />
-          <div className="editor-submit-btn-container">
-            <button className="editor-submit-btn" onClick={this.postCouponData}>쿠폰 저장</button>
-          </div>
-        </section>
+          <section className="editor-viewer-section">
+            <div className="viewer-display">
+
+              {this.state.coupon_data.map(coupon => {
+                return (
+                  <Coupon no={coupon.no}
+                    title={coupon.title}
+                    startDate={coupon.start_date}
+                    endDate={coupon.end_date}
+                    closeAction={this.handleCloseBtn}
+                    totalCnt={this.state.coupon_cnt}
+                  />
+                )
+              })}
+
+              {this.state.errMsg && (this.displayErrMsg())}
+
+            </div>
+            <div className="viewer-btn-container">
+              <button className="viewer-more-btn" onClick={this.handleMoreBtn}>+</button>
+            </div>
+          </section>
+        </div>
+        <div className="write-section-wrapper">
+          <section className="editor-write-section">
+            <div className="editor-title-container write">
+              <h3>쿠폰 정보입력</h3>
+            </div>
+            <CouponEditorNav
+              couponCnt={this.state.coupon_cnt}
+              handleCurEditor={this.handleCurEditor}
+              curEditor={this.state.cur_editor_num}
+            />
+            <CouponEditor
+              no={this.state.cur_editor_num}
+              title={this.getCouponData("title", this.state.cur_editor_num)}
+              startDate={this.getCouponData("start_date", this.state.cur_editor_num)}
+              endDate={this.getCouponData("end_date", this.state.cur_editor_num)}
+              handleInputChange={this.handleInputChange}
+            />
+            <div className="editor-submit-btn-container">
+              <button className="editor-submit-btn" onClick={this.postCouponData}>쿠폰 저장</button>
+            </div>
+          </section>
+        </div>
       </div>
     );
   }
