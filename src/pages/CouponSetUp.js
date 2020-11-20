@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 
 import './CSS/CouponSetUp.css';
+import FAKE_DATA from '../FAKE_DATA';
 
 
 
@@ -102,21 +103,18 @@ class CouponSetUp extends React.Component {
   postCouponData() {
     console.log('###')
     const { user_id, user_name, login_type, user_email } = sessionStorage
-    axios.post('http://54.180.150.143:3001/tickets/create', {
-      id: user_id,
-      name: user_name,
-      email: user_email,
-      login_type: login_type,
-      coupon_cnt: this.state.coupon_cnt,
-      coupon_data: this.state.coupon_data
-    },
+
+    localStorage.setItem("DATA", JSON.stringify(
       {
-        headers: {
-          'User-Id': user_id
-        }
-      })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+        id: user_id,
+        name: user_name,
+        email: user_email,
+        login_type: login_type,
+        coupon_cnt: this.state.coupon_cnt,
+        coupon_data: this.state.coupon_data
+      }
+    ))
+
   }
 
   getCouponData(key, no) {
@@ -127,6 +125,14 @@ class CouponSetUp extends React.Component {
   handleCurEditor(e) {
     return this.setState({ cur_editor_num: parseInt(e.target.value) })
   }
+
+  // handleCouponInfo(e){
+  //   FAKE_DATA.coupon_data.push({
+  //     group_id:3,
+  //     coupon_cnt: this.state.coupon_cnt,
+  //     data:this.state.coupon_data
+  //   })
+  // }
 
   render() {
     return (

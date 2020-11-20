@@ -9,7 +9,7 @@ const FAKE_DATA = {
     data: [
       {
         no: 1,
-        title: '첫번째 쿠폰',
+        title: '첫번째 쿠폰(2개짜리)',
         start_date: '2020-11-03',
         end_date: '2020-11-18'
       },
@@ -27,7 +27,7 @@ const FAKE_DATA = {
     data: [
       {
         no: 1,
-        title: '첫번째 쿠폰',
+        title: '첫번째 쿠폰(3개짜리)',
         start_date: '2020-11-03',
         end_date: '2020-11-18'
       },

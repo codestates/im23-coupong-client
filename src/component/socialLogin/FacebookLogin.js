@@ -12,6 +12,7 @@ function FacebookLoginComp(props) {
   const responseFacebook = (res) => {
     console.log(res);
     sessionStorage.setItem("login_type", "facebook");
+    sessionStorage.setItem("user_id", 3)
     sessionStorage.setItem("user_name", res.name);
     sessionStorage.setItem("user_email", res.email)
     sessionStorage.setItem("user_profile", res.picture.data.url);

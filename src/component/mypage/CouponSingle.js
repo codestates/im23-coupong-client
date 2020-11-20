@@ -12,7 +12,13 @@ class CouponSingle extends React.Component {
   }
   render() {
     return (
-      <div className="bg-container" style={{ backgroundImage: `url(${IMG})` }}>
+      <div
+        // className="bg-container"
+        className={
+          `bg-container overlap bg-no-${this.props.no}`
+        }
+        style={{ backgroundImage: `url(${IMG})` }}
+      >
         <div className="bg-text-container parent" style={{ width: "100%", height: "6rem" }}>
           <ScaleText>
             <p className="child"> {this.props.title ? this.props.title : "제목을 입력해 주세요"} </p>
