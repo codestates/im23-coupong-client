@@ -11,6 +11,7 @@ function GoogleLoginComp(props) {
 
   const responseGoogle = (res) => {
     sessionStorage.setItem("login_type", "google");
+    sessionStorage.setItem("user_id", 3)
     sessionStorage.setItem("user_name", res.profileObj.name);
     sessionStorage.setItem("user_email", res.profileObj.email);
     sessionStorage.setItem("user_profile", res.profileObj.imageUrl);

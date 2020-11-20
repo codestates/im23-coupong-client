@@ -16,10 +16,14 @@ class MyPageCoupon extends React.Component {
         {/* {
           FAKE_DATA.coupon_data.map(group => {
             return (
-              <CouponOverlap data={grouup.data} />
+              <CouponOverlap
+                groupNo={group.group_id}
+                data={group.data}
+              />
             )
           })
         } */}
+        coupon contents
       </div>
     )
   };

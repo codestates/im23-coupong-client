@@ -63,6 +63,7 @@ class Signup extends React.Component {
           // 로그인 성공 (home page redirection & root state update)
           console.log(res);
           sessionStorage.setItem("login_type", "local");
+          sessionStorage.setItem("user_id", res.data.user_id);
           sessionStorage.setItem("user_name", res.data.username);
           sessionStorage.setItem("user_email", res.data.email);
           sessionStorage.setItem("user_profile", "https://cdn.onlinewebfonts.com/svg/img_83486.png");
