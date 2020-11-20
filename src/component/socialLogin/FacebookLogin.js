@@ -24,7 +24,7 @@ function FacebookLoginComp(props) {
   return (
     <div className="fb-login social-login" >
       <FacebookLogin
-        appId={CONFIG.FACBOOK_APP_ID}
+        appId={CONFIG.FACEBOOK_APP_ID}
         fields="name,email,picture"
         callback={responseFacebook}
         render={renderProps => (

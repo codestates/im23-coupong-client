@@ -9,6 +9,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import StampBoard from './pages/StampBoard';
 
 // function App() {
 class App extends React.Component {
@@ -100,6 +101,13 @@ class App extends React.Component {
                 )
             }} />
 
+            <Route exact path="/couponsetting/stampboard" render={() => {
+              return this.requireAuth() ? (
+                <StampBoard />
+              ) : (
+                  <Redirect to="/login" />
+                )
+            }} />
           </Switch>
         </Router>
       </div >

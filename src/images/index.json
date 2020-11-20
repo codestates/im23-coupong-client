@@ -1,5 +1,14 @@
 {
+<<<<<<< HEAD
+    "grape": "./grape.png",
+    "tree": "./tree.png",
+    "whale": "./whale.png",
+    "back": "./back.png",
+    "back2": "./back2.png",
+    "back3": "./back3.png"
+=======
   "COUPON_BG_TEMPLATE": {
     "GOLD": "./coupon_template_1.png"
   }
+>>>>>>> e49b662260a6033fe648ba0b8dd7f7be5f3df85a
 }
