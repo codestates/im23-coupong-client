@@ -7,7 +7,9 @@
 }
 
 .mypage-content-area{
-  border:1px solid var(--color-scale-gray-2);
   width: 80%;
   margin-left: 1rem;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
 }

@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import './CSS/Signup.css';
 import axios from "axios";
+import sha1 from "js-sha1";
+import { SECREAT_KEY } from '../config/config.json'
 
 axios.defaults.withCredentials = true;
 class Signup extends React.Component {
@@ -10,14 +12,29 @@ class Signup extends React.Component {
     this.state = {
       email: "",
       password: "",
+      password_confirm: "",
       username: "",
-      errorMessage: ""
+      errorMessage: "",
+      redirect: null
     };
     this.handleInputValue = this.handleInputValue.bind(this);
+    this.checkValidPw = this.checkValidPw.bind(this);
+  }
+
+  checkValidPw() {
+    if (this.state.password === this.state.password_confirm) {
+      return true;
+    }
+    return false;
   }
 
   handleInputValue = (key) => (e) => {
-    this.setState({ [key]: e.target.value });
+    console.log(this.state);
+    if (key === "password" || key === "password_confirm") {
+      this.setState({ [key]: sha1(e.target.value + SECREAT_KEY) })
+    } else {
+      this.setState({ [key]: e.target.value });
+    }
   };
 
   handleSignup = () => {
@@ -27,34 +44,54 @@ class Signup extends React.Component {
         errorMessage: "모든 항목은 필수입니다"
       });
       return;
-    }
-    else {
+    } else if (!this.checkValidPw()) {
+      this.setState({
+        errorMessage: "비밀번호를 확인해 주세요."
+      });
+      return;
+    } else {
       this.setState({
         errorMessage: ""
       });
+      return axios
+        .post("http://54.180.150.143:3001/users/signup", {
+          email: email,
+          password: password,
+          username: username,
+        })
+        .then((res) => {
+          // 로그인 성공 (home page redirection & root state update)
+          console.log(res);
+          sessionStorage.setItem("login_type", "local");
+          sessionStorage.setItem("user_name", res.data.username);
+          sessionStorage.setItem("user_email", res.data.email);
+          sessionStorage.setItem("user_profile", "https://cdn.onlinewebfonts.com/svg/img_83486.png");
+          sessionStorage.setItem("user_birth", "");
+          this.props.usrUpdate(res.data.username);
+          this.setState({ redirect: "/" });
+        })
+        .catch((err) => {
+          if (err.response.status === 409) {
+            this.setState({
+              errorMessage: "이미 존재하는 이메일입니다."
+            })
+          }
+        });
     }
-
-    axios
-      .post("http://54.180.150.143:3001/users/signup", {
-        email: email,
-        password: password,
-        username: username,
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
     return (
       <div className="signup-wrapper">
         <div className="signup-container">
           {/* signup form */}
           <div className="signup-form-container">
             <form onSubmit={(e) => e.preventDefault()}>
-              <h1 className="title">Sign Up</h1>
-              <div className="warnning">모든 항목은 필수입니다</div>
+              <h1 className="signup-title">Sign Up</h1>
+              <div className="signup-warnning"><p>모든 항목은 필수입니다</p></div>
 
               <div className="signup-group">
                 <label type="email">Email:</label>
@@ -68,6 +105,13 @@ class Signup extends React.Component {
                 <input
                   type="password" id="password-input"
                   onChange={this.handleInputValue("password")}></input>
+              </div>
+
+              <div className="signup-group">
+                <label type="password">Password Confirm:</label>
+                <input
+                  type="password" id="password-confirm-input"
+                  onChange={this.handleInputValue("password_confirm")}></input>
               </div>
 
               <div className="signup-group">

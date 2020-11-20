@@ -52,7 +52,13 @@ class MyPageNav extends React.Component {
             <Link className="mypage-nav-link" to="/mypage" onClick={this.handleLinkClick}>프로필 설정</Link>
           </li>
           <li className="mypage-nav-content">
-            <Link className="mypage-nav-link" to="/mypage/coupon" onClick={this.handleLinkClick}>쿠폰 내역</Link>
+            <Link className="mypage-nav-link" to="/mypage/coupon" onClick={this.handleLinkClick}>쿠폰 현황</Link>
+          </li>
+          <li className="mypage-nav-content">
+            <Link className="mypage-nav-link" to="/mypage/security" onClick={this.handleLinkClick}>비밀번호 변경</Link>
+          </li>
+          <li className="mypage-nav-content">
+            <Link className="mypage-nav-link delete" to="/mypage/delete" onClick={this.handleLinkClick}>회원 탈퇴</Link>
           </li>
         </ul>
       </div>

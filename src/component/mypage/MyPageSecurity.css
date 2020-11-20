@@ -1,0 +1,43 @@
+
+.mypage-security-container {
+  min-width: 25rem;
+  padding: 3.25rem 0;
+  text-align: center;
+  max-width: 25rem;
+  box-shadow: 10px 10px rgba(77, 77, 77, 0.3);
+  border:3px solid black;
+}
+
+.security-form-container{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
+
+.security-group{
+  width: 100%;
+  display: block;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.security-group label{
+  display:block;
+  text-align: left;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+
+}
+
+.security-group>input{
+  width: 95%;
+  display: block;
+  text-align: left;
+  padding: 0.5rem 0.25rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+}
+
+.security-group-title{
+  margin-bottom: 2rem;
+}

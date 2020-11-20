@@ -45,11 +45,11 @@
 }
 
 .fb-login{
-  background-color: #3B5998;
+  background-color: var(--color-facebook);
 }
 
 .google-login{
-  background-color: #db4437;
+  background-color: var(--color-google);
 }
 
 .seperator-container{
@@ -115,4 +115,10 @@ input[type="submit"]{
 input[type="submit"]:hover{
   cursor:pointer;
   box-shadow:0 10px 15px -5px rgba(0,0,0,0.4);
+}
+
+.login-title{
+  text-align: left;
+  margin-left: 6rem;
+  margin-bottom: 2rem;
 }

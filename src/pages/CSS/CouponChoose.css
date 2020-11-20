@@ -1,0 +1,43 @@
+
+.coupon-choose-wrapper{
+  margin: 4.5rem 6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.choose-router-container{
+  width: 20rem;
+  height: 20rem;
+  margin-top: 4.5rem;
+  text-align: center;
+  box-shadow: 10px 10px rgba(77, 77, 77, 0.3);
+  border:3px solid black;
+}
+
+.choose-router-container a{
+  height: 13.5rem;
+  display: flex;
+  padding: 3.25rem 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition:all .2s ease-in-out;
+}
+
+
+.choose-router-container a:hover{
+  cursor: pointer;
+  color: white;
+  background-color: black;
+}
+
+.choose-router-container.ticket{
+margin-left: 4rem;
+}
+
+.choose-router-container span{
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  font-family: 'Black Han Sans';
+}
