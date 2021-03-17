@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# 🎓 Coupong
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![coupong little](https://user-images.githubusercontent.com/66916041/98778884-5baf9680-2436-11eb-819e-86cc6c73b6b3.png)
 
-## Available Scripts
+#### 🚀 About
+동생이 스스로 할 일을 하는 것을 돕기 위해,
+칭찬스티커판을 만들어 준 적이 있나요?
 
-In the project directory, you can run:
+부모님의 생신날 집안일 쿠폰을 만들어 선물해 본 경험이 있지 않나요?
 
-### `npm start`
+종이나 스티커 없이도 여러분이 직접 스티커판이나 쿠폰을 만들 수 있도록 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+저희가 도와드리겠습니다!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**_"진심이 담긴 선물을 만들어 주는 곳"_**
 
-### `npm test`
+****Coupong**** 입니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 🔆 Stack
+![image](https://user-images.githubusercontent.com/66219179/111104280-a9c6d900-8593-11eb-8d82-a1087c1d5f5a.png)
 
-### `npm run build`
+# 📌 Flow Chart
+![Coupong Flowchart](https://user-images.githubusercontent.com/66916041/98794741-bc49ce00-244c-11eb-9947-1ab73f0a513a.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 👥Team Member
+|Git|Name|Role|
+|:--|:--:|:--:|   
+|[![GITHUB-hanliang38](https://img.shields.io/badge/GITHUB-hanliang38-black?style=for-the-badge&logo=GitHub)](https://github.com/hanliang38)|👨 곽미라|🌐 Frontend|
+|[![GITHUB-WooJunKang](https://img.shields.io/badge/GITHUB-WooJunKang-pink?style=for-the-badge&logo=GitHub)](https://github.com/WooJunKang)|👩 강우준|🌐 Frontend|
+|[![GITHUB-jesussangho](https://img.shields.io/badge/GITHUB-jesussangho-blue?style=for-the-badge&logo=GitHub)](https://github.com/jesussangho)|👨 이상호|💻 Backend|
+|[![GITHUB-hyunhoh](https://img.shields.io/badge/GITHUB-hyunhoh-green?style=for-the-badge&logo=GitHub)](https://github.com/hyunhoh)|👨 한현호|💻 Backend|   
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 🏷️ For project details
+## [Coupong Wiki](https://github.com/codestates/im23-coupong-client/wiki)
